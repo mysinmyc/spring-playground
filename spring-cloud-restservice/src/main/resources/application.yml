@@ -1,0 +1,10 @@
+spring:
+    application:
+       name: restservice
+       instance_id: ${myProcessId}
+    cloud:
+       consul:
+          discovery:
+             queryPassing: true          
+server:
+    port: 0

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: edge
+    instance_id: ${myProcessId}
+  cloud:
+    consul:
+        discovery:
+           queryPassing: true             
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: httpd-httpd
+          uri: lb://httpd-httpd
+          predicates:
+            - Path=/httpd/**
+          filters:
+            - RewritePath=/httpd/(?<path>.*), /$\{path}
+        - id: restservice
+          uri: lb://restservice
+          predicates:
+            - Path=/restservice/**
+          filters:
+            - RewritePath=/restservice/(?<path>.*), /$\{path}            
+       
+debug: true
+management:
+   endpoints:
+       web: 
+           exposure:
+                include: gateway
