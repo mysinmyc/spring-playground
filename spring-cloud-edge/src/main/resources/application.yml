@@ -23,10 +23,3 @@ spring:
             - Path=/restservice/**
           filters:
             - RewritePath=/restservice/(?<path>.*), /$\{path}            
-       
-debug: true
-management:
-   endpoints:
-       web: 
-           exposure:
-                include: gateway
