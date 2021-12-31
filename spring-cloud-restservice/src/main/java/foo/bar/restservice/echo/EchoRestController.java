@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class EchoRestController {
 
 	
+	static final String DEFAULT="__DEFAULT__";
+	
+	@Value("${echo.message.default:Hello!!!}")
+	String echoMessageDefault;
+	
 	@GetMapping("/echo")
-	public Message echo(@Value("${myProcessId}")String processId, @RequestParam(name="message",defaultValue = "Hello!!!") String message) {
+	public Message echo(@Value("${myProcessId}")String processId, @RequestParam(name="message",defaultValue = DEFAULT) String message) {
 		Message result = new Message();
-		result.setMessage(message);
+		result.setMessage(DEFAULT.equals(message) ? echoMessageDefault : message);
 		result.setMeta(processId);
 		return result;
 	}
