@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config
+    instance_id: ${myProcessId}
+  cloud:
+    consul:
+        discovery:
+           queryPassing: true       
+        config:
+           enabled: true
+           format: YAML
+server:
+    port: 0           

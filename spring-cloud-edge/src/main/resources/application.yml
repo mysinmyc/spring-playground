@@ -14,12 +14,12 @@ spring:
         - id: httpd-httpd
           uri: lb://httpd-httpd
           predicates:
-            - Path=/httpd/**
+            - Path=/static/httpd/**
           filters:
-            - RewritePath=/httpd/(?<path>.*), /$\{path}
+            - RewritePath=/static/httpd/(?<remaining>.*), /$\{remaining}
         - id: restservice
           uri: lb://restservice
           predicates:
-            - Path=/restservice/**
+            - Path=/static/restservice/**
           filters:
-            - RewritePath=/restservice/(?<path>.*), /$\{path}            
+            - RewritePath=/static/restservice/(?<remaining>.*), /$\{remaining}            
