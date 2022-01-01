@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class RestServiceMain {
 	
 	public static void main(String[] args) {
-		System.setProperty("myProcessId", ManagementFactory.getRuntimeMXBean().getName());
+		System.setProperty("myProcessId.default", ManagementFactory.getRuntimeMXBean().getName());
 	    SpringApplication.run(RestServiceMain.class, args);
 
 	}

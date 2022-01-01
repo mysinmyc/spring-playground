@@ -1,10 +1,8 @@
 spring:
     application:
        name: restservice
-       instance_id: ${myProcessId}
+       instance_id: ${myProcessId:${myProcessId.default}}
     cloud:
        consul:
           discovery:
-             queryPassing: true          
-server:
-    port: 0
+             queryPassing: true

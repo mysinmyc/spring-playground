@@ -15,7 +15,7 @@ public class EchoRestController {
 	String echoMessageDefault;
 	
 	@GetMapping("/echo")
-	public Message echo(@Value("${myProcessId}")String processId, @RequestParam(name="message",defaultValue = DEFAULT) String message) {
+	public Message echo(@Value("${processId:${myProcessId.default}}")String processId, @RequestParam(name="message",defaultValue = DEFAULT) String message) {
 		Message result = new Message();
 		result.setMessage(DEFAULT.equals(message) ? echoMessageDefault : message);
 		result.setMeta(processId);
